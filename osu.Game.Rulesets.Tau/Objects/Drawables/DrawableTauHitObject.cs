@@ -18,11 +18,11 @@ using osu.Framework.Bindables;
 
 namespace osu.Game.Rulesets.Tau.Objects.Drawables
 {
-    public class DrawabletauHitObject : DrawableHitObject<TauHitObject>, IKeyBindingHandler<TauAction>
+    public class DrawableTauHitObject : DrawableHitObject<TauHitObject>, IKeyBindingHandler<TauAction>
     {
         public Box Box;
 
-        public Func<DrawabletauHitObject, bool> CheckValidation;
+        public Func<DrawableTauHitObject, bool> CheckValidation;
 
         /// <summary>
         /// A list of keys which can result in hits for this HitObject.
@@ -42,7 +42,7 @@ namespace osu.Game.Rulesets.Tau.Objects.Drawables
 
         protected sealed override double InitialLifetimeOffset => HitObject.TimePreempt;
 
-        public DrawabletauHitObject(TauHitObject hitObject)
+        public DrawableTauHitObject(TauHitObject hitObject)
             : base(hitObject)
         {
             Anchor = Anchor.Centre;

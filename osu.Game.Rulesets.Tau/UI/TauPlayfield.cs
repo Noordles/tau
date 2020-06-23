@@ -36,6 +36,8 @@ namespace osu.Game.Rulesets.Tau.UI
         public const float UNIVERSAL_SCALE = 0.6f;
         public static readonly Vector2 BASE_SIZE = new Vector2(768, 768);
 
+        public override bool ReceivePositionalInputAt(Vector2 screenSpacePos) => true;
+
         public TauPlayfield(BeatmapDifficulty difficulty)
         {
             cursor = new TauCursor(difficulty);
@@ -133,13 +135,13 @@ namespace osu.Game.Rulesets.Tau.UI
             playfieldBackground.FadeTo(PlayfieldDimLevel.Value, 100);
         }
 
-        public bool CheckIfWeCanValidate(DrawabletauHitObject obj) => cursor.CheckForValidation(obj);
+        public bool CheckIfWeCanValidate(DrawableTauHitObject obj) => cursor.CheckForValidation(obj);
 
         public override void Add(DrawableHitObject h)
         {
             base.Add(h);
 
-            var obj = (DrawabletauHitObject)h;
+            var obj = (DrawableTauHitObject)h;
             obj.CheckValidation = CheckIfWeCanValidate;
 
             obj.OnNewResult += onNewResult;
@@ -150,7 +152,7 @@ namespace osu.Game.Rulesets.Tau.UI
             if (!judgedObject.DisplayResult || !DisplayJudgements.Value)
                 return;
 
-            var tauObj = (DrawabletauHitObject)judgedObject;
+            var tauObj = (DrawableTauHitObject)judgedObject;
 
             var a = tauObj.HitObject.Angle * (float)(Math.PI / 180);
 
@@ -211,7 +213,7 @@ namespace osu.Game.Rulesets.Tau.UI
                 ShowVisualisation.TriggerChange();
             }
 
-            protected override void OnNewBeat(int beatIndex, TimingControlPoint timingPoint, EffectControlPoint effectPoint, TrackAmplitudes amplitudes)
+            protected override void OnNewBeat(int beatIndex, TimingControlPoint timingPoint, EffectControlPoint effectPoint, ChannelAmplitudes amplitudes)
             {
                 if (effectPoint.KiaiMode)
                 {

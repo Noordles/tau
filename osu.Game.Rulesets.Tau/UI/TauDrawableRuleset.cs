@@ -17,9 +17,9 @@ using osu.Game.Rulesets.UI;
 namespace osu.Game.Rulesets.Tau.UI
 {
     [Cached]
-    public class DrawabletauRuleset : DrawableRuleset<TauHitObject>
+    public class DrawableTauRuleset : DrawableRuleset<TauHitObject>
     {
-        public DrawabletauRuleset(TauRuleset ruleset, IBeatmap beatmap, IReadOnlyList<Mod> mods)
+        public DrawableTauRuleset(TauRuleset ruleset, IBeatmap beatmap, IReadOnlyList<Mod> mods)
             : base(ruleset, beatmap, mods)
         {
         }
@@ -32,7 +32,7 @@ namespace osu.Game.Rulesets.Tau.UI
             h switch
             {
                 Slider slider => new DrawableSlider(slider),
-                TauHitObject beat => new DrawabletauHitObject(beat),
+                TauHitObject beat => new DrawableTauHitObject(beat),
                 _ => null
             };
 

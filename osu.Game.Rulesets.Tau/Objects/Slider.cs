@@ -12,7 +12,7 @@ using osu.Game.Rulesets.Scoring;
 
 namespace osu.Game.Rulesets.Tau.Objects
 {
-    public class Slider : TauHitObject, IHasCurve
+    public class Slider : TauHitObject, IHasPathWithRepeats
     {
         public double EndTime
         {
@@ -20,7 +20,11 @@ namespace osu.Game.Rulesets.Tau.Objects
             set => throw new System.NotSupportedException($"Adjust via {nameof(RepeatCount)} instead"); // can be implemented if/when needed.
         }
 
-        public double Duration => EndTime - StartTime;
+        public double Duration
+        {
+            get => EndTime - StartTime;
+            set => EndTime = StartTime + value;
+        }
 
         public double Distance => Path.Distance;
 

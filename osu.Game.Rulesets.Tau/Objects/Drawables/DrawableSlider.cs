@@ -9,7 +9,7 @@ using osuTK;
 
 namespace osu.Game.Rulesets.Tau.Objects.Drawables
 {
-    public class DrawableSlider : DrawabletauHitObject
+    public class DrawableSlider : DrawableTauHitObject
     {
         private Slider slider;
 
