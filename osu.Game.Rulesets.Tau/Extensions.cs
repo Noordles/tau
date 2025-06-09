@@ -1,5 +1,6 @@
 ﻿using System;
 using osuTK;
+using osu.Game.Rulesets.Tau.UI;
 
 namespace osu.Game.Rulesets.Tau
 {
@@ -19,7 +20,7 @@ namespace osu.Game.Rulesets.Tau
 
         public static float GetHitObjectAngle(this Vector2 target)
         {
-            Vector2 offset = new Vector2(256, 192) - target; // Using centre of playfield.
+            Vector2 offset = TauPlayfield.BASE_SIZE / 2 - target; // Using centre of playfield.
 
             return (float)MathHelper.RadiansToDegrees(Math.Atan2(offset.X, -offset.Y)) - 180;
         }
